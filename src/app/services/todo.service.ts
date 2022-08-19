@@ -1,4 +1,6 @@
 import { Injectable } from '@angular/core';
+import { retry } from 'rxjs';
+import { Todo } from '../interfaces/todo.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -6,13 +8,22 @@ import { Injectable } from '@angular/core';
 export class TodoService {
 
   private _modal: boolean = false;
-  constructor() { }
+  private _todo: Todo[] = []
 
-  get modal() {
+  get modal(): boolean {
     return this._modal;
   }
 
+  get todos(): Todo[]{
+    return [...this._todo];
+  }
+  
   stateModal() {
     this._modal = !this._modal;
   }
+  
+  registerTodo(todo: Todo) {
+    this._todo.unshift(todo);
+  }
+  constructor() { }
 }

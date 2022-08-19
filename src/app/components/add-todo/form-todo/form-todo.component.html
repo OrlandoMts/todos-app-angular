@@ -1,18 +1,20 @@
 <div class="container p-4 h-[220px] mt-4 lg:mt-8" *ngIf="modal; else noModal">
     <h2>Escribe una tarea por hacer</h2>
-    <form action="" class="flex flex-col justify-evenly h-[150px]">
-        <input type="text" placeholder="Titulo" class="p-2 rounded-md shadow-md">
-        <input type="text" placeholder="Descripcion" class="p-2 rounded-md shadow-md">
-        <div class="flex justify-end">
-            <button 
-                class="rounded-md bg-gray-200 text-white mr-4 p-2"
-                (click)="handleModal()"
-                >Cancelar</button>
-            <button 
-                class="rounded-md bg-[#EEAA49] text-white mr-2 p-2"
-                (click)="handleModal()"
-                >Guardar</button>
-        </div>
+    <form action="" 
+        class="flex flex-col justify-evenly h-[150px]"
+        (ngSubmit)="register()">
+            <input type="text" placeholder="Titulo" class="p-2 rounded-md shadow-md" name="title" [(ngModel)]="todo.title">
+            <input type="text" placeholder="Descripcion" class="p-2 rounded-md shadow-md" name="description" [(ngModel)]="todo.description">
+            <div class="flex justify-end">
+                <button 
+                    class="rounded-md bg-gray-200 text-white mr-4 p-2"
+                    (click)="handleModal()"
+                    >Cancelar</button>
+                <button 
+                    class="rounded-md bg-[#EEAA49] text-white mr-2 p-2"
+                    type="submit"
+                    >Guardar</button>
+            </div>
     </form>
 </div>
 

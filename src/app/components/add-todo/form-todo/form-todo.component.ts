@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Todo } from 'src/app/interfaces/todo.interface';
 import { TodoService } from 'src/app/services/todo.service';
 
 @Component({
@@ -6,6 +7,12 @@ import { TodoService } from 'src/app/services/todo.service';
   templateUrl: './form-todo.component.html'
 })
 export class FormTodoComponent implements OnInit {
+
+  todo: Todo = {
+    title: '',
+    description: '',
+    isComplete: false
+  }
 
   constructor(
     private todoService: TodoService
@@ -21,5 +28,25 @@ export class FormTodoComponent implements OnInit {
 
   handleModal() {
     this.todoService.stateModal();
+    this.todo = {
+      title: '',
+      description: '',
+      isComplete: false
+    };
+  }
+
+  register(){
+    this.todoService.registerTodo(this.todo)
+    // Es par cambiar el estado del modal y que se oculte
+    this.handleModal();
+    this.todo = {
+      title: '',
+      description: '',
+      isComplete: false
+    };
+
+    const tareas = this.todoService.todos;
+    
+    console.log(tareas)
   }
 }
