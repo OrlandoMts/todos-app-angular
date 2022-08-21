@@ -7,7 +7,7 @@ import { Todo } from '../interfaces/todo.interface';
 })
 export class TodoService {
 
-  private _modal: boolean = false;
+  private _modal: boolean = true; // debe de ir en false
   private _todo: Todo[] = []
 
   get modal(): boolean {
@@ -24,6 +24,10 @@ export class TodoService {
   
   registerTodo(todo: Todo) {
     this._todo.unshift(todo);
+  }
+
+  completeTodo(index: number): void{
+    const completed = true;
   }
   constructor() { }
 }

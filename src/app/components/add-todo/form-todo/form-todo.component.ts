@@ -36,6 +36,10 @@ export class FormTodoComponent implements OnInit {
   }
 
   register(){
+    //validar vacios antes de enviar valor
+    if (this.todo.title.trim().length === 0){
+      return
+    }
     this.todoService.registerTodo(this.todo)
     // Es par cambiar el estado del modal y que se oculte
     this.handleModal();
