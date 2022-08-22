@@ -1,9 +1,9 @@
 <section class="md:container mx-auto h-auto p-4 ">
     <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
         <div class="rounded-md shadow-md p-2" *ngFor="let todo of listTodos; index as i">
-            <p class="text-[#EEAA49]">{{todo.title | titlecase}} - {{i}}</p>
+            <p class="text-[#EEAA49]">{{todo.title | titlecase}}</p>
             <p>{{todo.description}}</p>
-            <p class="cursor-poiner" (click)="completeTodo(i)"  >Completar</p>
+            <button class="rounded-md bg-[#EEAA49] text-white mt-4 p-1" (click)="completeTodo(i)"  >Completar</button>
         </div>
     </div>
 </section>

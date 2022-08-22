@@ -20,8 +20,8 @@ export class FormTodoComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  
-  
+
+
   get modal() {
     return this.todoService.modal;
   }
@@ -48,9 +48,5 @@ export class FormTodoComponent implements OnInit {
       description: '',
       isComplete: false
     };
-
-    const tareas = this.todoService.todos;
-    
-    console.log(tareas)
   }
 }

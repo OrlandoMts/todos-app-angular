@@ -7,7 +7,7 @@ import { Todo } from '../interfaces/todo.interface';
 })
 export class TodoService {
 
-  private _modal: boolean = true; // debe de ir en false
+  private _modal: boolean = false; // debe de ir en false
   private _todo: Todo[] = []
 
   get modal(): boolean {
@@ -17,17 +17,22 @@ export class TodoService {
   get todos(): Todo[]{
     return [...this._todo];
   }
-  
+
   stateModal() {
     this._modal = !this._modal;
   }
-  
+
   registerTodo(todo: Todo) {
     this._todo.unshift(todo);
+    localStorage.setItem('todos', JSON.stringify(this._todo) );
   }
 
   completeTodo(index: number): void{
-    const completed = true;
+    let completed: Todo[] = this._todo.splice(index,1);
+    const {isComplete} = completed[0]
+    console.log(isComplete)
   }
-  constructor() { }
+  constructor() {
+    // this._todo = JSON.parse(localStorage.getItem('todos')!) || [];
+  }
 }
